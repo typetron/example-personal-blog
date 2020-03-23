@@ -5,7 +5,7 @@ import { LoginForm } from 'App/Forms/LoginForm';
 import { Inject } from '@Typetron/Container';
 import { Auth } from '@Typetron/Framework/Auth';
 
-@Controller()
+@Controller('api')
 export class AuthController {
 
     @Inject()

@@ -1,0 +1,32 @@
+
+<form (ngSubmit)="save()" [formGroup]="form">
+    <div class="form-control">
+        <label for="title">Title</label>
+        <input type="text" id="title" formControlName="title" autocomplete="off">
+        <ng-container *ngIf="form.controls.title.touched && form.controls.title.errors">
+            <div class="error" *ngFor="let error of form.controls.title.errors| keyvalue">
+                {{ error.value }}
+            </div>
+        </ng-container>
+    </div>
+    <div class="form-control">
+        <label for="image">Image</label>
+        <input type="file" id="image" (change)="setImageField($event)">
+        <ng-container *ngIf="form.controls.image.touched && form.controls.image.errors">
+            <div class="error" *ngFor="let error of form.controls.image.errors| keyvalue">
+                {{ error.value }}
+            </div>
+        </ng-container>
+    </div>
+    <div class="form-control">
+        <label for="content">Content</label>
+        <ckeditor [editor]="contentEditor" id="content" formControlName="content"></ckeditor>
+        <ng-container *ngIf="form.controls.content.touched && form.controls.content.errors">
+            <div class="error" *ngFor="let error of form.controls.content.errors| keyvalue">
+                {{ error.value }}
+            </div>
+        </ng-container>
+    </div>
+
+    <button [disabled]="form.invalid">Save</button>
+</form>

@@ -8,11 +8,14 @@ export default new AppConfig({
     port: 8000,
     environment: 'development',
     middleware: [
-        CorsMiddleware
+        // CorsMiddleware,
     ],
     providers: [
         AppProvider,
         RoutingProvider,
         DatabaseProvider,
-    ]
+    ],
+    staticAssets: {
+        '*': ['public/frontend']
+    }
 });
