@@ -59,7 +59,7 @@ import { Controller, Get} from '@Typetron/Router';
 @Controller('users')
 class UserController {
 
-    @Get('{id}')
+    @Get(':id')
     read(id: number) {
         return `This route will show the user with id ${id}`;
     }

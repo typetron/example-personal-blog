@@ -4,6 +4,7 @@ import { User } from 'App/Entities/User';
 import { LoginForm } from 'App/Forms/LoginForm';
 import { Inject } from '@Typetron/Container';
 import { Auth } from '@Typetron/Framework/Auth';
+import { User as UserModel } from 'App/Models/User';
 
 @Controller('api')
 export class AuthController {
@@ -22,7 +23,7 @@ export class AuthController {
             throw new Error('Passwords don\'t match');
         }
 
-        return this.auth.register(form.email, form.password);
+        return UserModel.from(await this.auth.register(form.email, form.password));
     }
 
     @Post('login')

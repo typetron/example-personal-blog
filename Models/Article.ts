@@ -1,4 +1,4 @@
-import { Field, Model } from '@typetron/framework/Models';
+import { Field, Model } from '@Typetron/Models';
 
 export class Article extends Model {
     @Field()

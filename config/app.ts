@@ -1,5 +1,5 @@
 /* tslint:disable:no-default-export */
-import { AppConfig, CorsMiddleware } from '@Typetron/Framework';
+import { AppConfig } from '@Typetron/Framework';
 import { DatabaseProvider } from 'App/Providers/DatabaseProvider';
 import { RoutingProvider } from 'App/Providers/RoutingProvider';
 import { AppProvider } from 'App/Providers/AppProvider';
@@ -16,6 +16,6 @@ export default new AppConfig({
         DatabaseProvider,
     ],
     staticAssets: {
-        '*': ['public/frontend']
+        '*': ['public', 'public/frontend']
     }
 });

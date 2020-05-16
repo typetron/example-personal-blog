@@ -8,7 +8,7 @@ class AuthControllerTest extends TestCase {
 
     @test
     async login() {
-        const response = await this.post('login', {});
-        expect(response.status).to.be.equal(Http.Status.BAD_REQUEST);
+        const response = await this.post('api.login', {});
+        expect(response.status).to.be.equal(Http.Status.UNPROCESSABLE_ENTITY);
     }
 }

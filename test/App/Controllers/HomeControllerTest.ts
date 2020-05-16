@@ -7,7 +7,7 @@ class HomeControllerTest extends TestCase {
 
     @test
     async showsWelcomeMessage() {
-        const response = await this.get('welcome');
-        expect(response.content).to.contain('Build something awesome');
+        const response = await this.get('api.index');
+        expect(response.content).to.be.instanceOf(Array);
     }
 }
