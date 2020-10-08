@@ -1,0 +1,17 @@
+$text-color: rgb(50, 50, 50);
+$sub-text-color: rgb(130, 130, 130);
+$low-text-color: rgb(230, 230, 230);
+$primary-color: #246de6;
+$error-color: #e61e2b;
+
+.sub-text{
+    color: $sub-text-color;
+}
+
+.low-text{
+    color: $low-text-color;
+}
+
+.primary{
+    color: $primary-color;
+}

@@ -1,0 +1,5 @@
+<div class="portfolio">
+    <div *ngFor="let article of articles" [routerLink]="['/',article.id]">
+        <img  [src]="'assets/articles/' + article.image" alt="recipe image">
+    </div>
+</div>
