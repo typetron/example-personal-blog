@@ -6,10 +6,10 @@ export class RoutingProvider extends Provider {
     directory = 'Controllers';
 
     @Inject()
-    appConfig: AppConfig;
+    appConfig: AppConfig
 
     @Inject()
-    router: Router;
+    router: Router
 
     register() {
         this.router.middleware = this.appConfig.middleware || [];

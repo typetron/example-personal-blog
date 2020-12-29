@@ -8,11 +8,11 @@ export class LoginForm extends Form {
         Required,
         Email
     )
-    email: string;
+    email: string
 
     @Field()
     @Rules(
         Required,
     )
-    password: string;
+    password: string
 }

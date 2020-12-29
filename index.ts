@@ -8,4 +8,4 @@ Application.create(__dirname).then(app => {
     app.startServer();
     const config = app.get(AppConfig);
     console.log(`Started server at: http://localhost:${config.port}`);
-});
+})

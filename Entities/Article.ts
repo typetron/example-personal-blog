@@ -1,10 +1,10 @@
-import { Column, CreatedAt, Entity, ID, Meta, UpdatedAt } from '@Typetron/Database';
+import { Column, CreatedAt, Entity, ID, Options, PrimaryColumn, UpdatedAt } from '@Typetron/Database';
 
-@Meta({
-    table: 'articles'
+@Options({
+    table: 'articles',
 })
 export class Article extends Entity {
-    @Column()
+    @PrimaryColumn()
     id: ID;
 
     @Column()
@@ -17,8 +17,8 @@ export class Article extends Entity {
     image: string;
 
     @CreatedAt()
-    createdAt: Date;
+    createdAt: Date
 
     @UpdatedAt()
-    updatedAt: Date;
+    updatedAt: Date
 }

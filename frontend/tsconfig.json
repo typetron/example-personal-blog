@@ -23,7 +23,7 @@
                 "./src/app/*"
             ],
             "@Typetron/*": [
-                "node_modules/@typetron/framework2/*"
+                "node_modules/@typetron/framework/*"
             ],
             "Data/*": [
                 "../Forms/*",

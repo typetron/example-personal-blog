@@ -11,8 +11,10 @@
 		"deprecation": {
 			"severity": "warn"
 		},
-		"eofline": true,
+		"eofline": false,
 		"forin": true,
+		"ban-types": true,
+		"only-arrow-functions": true,
 		"import-blacklist": [
 			true,
 			"rxjs/Rx"
@@ -78,7 +80,7 @@
 		"radix": true,
 		"semicolon": [
 			true,
-			"always"
+			"never"
 		],
 		"triple-equals": [
 			true,

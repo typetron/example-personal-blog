@@ -2,20 +2,20 @@ import { Field, Model } from '@Typetron/Models';
 
 export class Article extends Model {
     @Field()
-    id: number;
+    id: number
 
     @Field()
-    title: string;
+    title: string
 
     @Field()
-    content: string;
+    content: string
 
     @Field()
-    image: string;
+    image: string
 
     @Field()
-    createdAt: Date;
+    createdAt: Date
 
     @Field()
-    updatedAt: Date;
+    updatedAt: Date
 }

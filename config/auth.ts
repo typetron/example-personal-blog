@@ -8,4 +8,4 @@ export default new AuthConfig({
     entity: User,
     signature: '696?sX}Fqp,|3/$txG)5PJSVoAnCj|pW03ytqLbNX/9o,Q)5O>z4x3AV7aIDlbd',
     saltRounds: 12,
-});
+})
