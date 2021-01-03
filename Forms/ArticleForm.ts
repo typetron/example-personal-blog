@@ -1,5 +1,6 @@
 import { MinLength, Required } from '@Typetron/Validation';
 import { Field, Form, Rules } from '@Typetron/Forms';
+import { File } from '@Typetron/Storage';
 
 export class ArticleForm extends Form {
 
@@ -14,11 +15,11 @@ export class ArticleForm extends Form {
     @Rules(
         Required
     )
-    image: string;
+    image: File
 
     @Field()
     @Rules(
         Required
     )
-    content: string;
+    content: string
 }

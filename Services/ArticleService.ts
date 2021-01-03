@@ -9,14 +9,14 @@ import { Inject } from '@Typetron/Container';
 export class ArticleService {
 
     @Inject()
-    storage: Storage;
+    storage: Storage
 
     @Post()
     @Middleware(AuthMiddleware)
     async add(form: ArticleForm) {
-        // if (form.image instanceof File) {
-        //     await this.storage.save(form.image, 'public/articles')
-        // }
+        if (form.image) {
+            await this.storage.save(form.image, 'public/articles');
+        }
         return ArticleModel.from(await Article.create(form));
     }
 
