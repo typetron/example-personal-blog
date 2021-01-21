@@ -7,7 +7,7 @@ import { Inject } from '@Typetron/Container';
 import { ArticleService } from 'App/Services/ArticleService';
 
 @Controller()
-export class ArticleController {
+export class ArticlesController {
 
     @Inject()
     articleService: ArticleService;
