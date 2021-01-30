@@ -1,25 +1,17 @@
-import { MinLength, Required } from '@Typetron/Validation';
-import { Field, Form, Rules } from '@Typetron/Forms';
-import { File } from '@Typetron/Storage';
+import { MinLength, Required } from '@Typetron/Validation'
+import { Field, Form, Rules } from '@Typetron/Forms'
+import { File } from '@Typetron/Storage/File'
 
 export class ArticleForm extends Form {
 
     @Field()
-    @Rules(
-        Required,
-        MinLength(5)
-    )
+    @Rules(Required, MinLength(5))
     title: string
 
     @Field()
-    @Rules(
-        Required
-    )
-    image: File
+    image?: File
 
     @Field()
-    @Rules(
-        Required
-    )
+    @Rules(Required)
     content: string
 }

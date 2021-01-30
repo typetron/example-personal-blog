@@ -1,12 +1,12 @@
-import { Controller, Post } from '@Typetron/Router';
-import { RegisterForm } from 'App/Forms/RegisterForm';
-import { User } from 'App/Entities/User';
-import { User as UserModel } from 'App/Models/User';
-import { LoginForm } from 'App/Forms/LoginForm';
-import { Inject } from '@Typetron/Container';
-import { Auth } from '@Typetron/Framework/Auth';
+import { Controller, Post } from '@Typetron/Router'
+import { RegisterForm } from 'App/Forms/RegisterForm'
+import { User } from 'App/Entities/User'
+import { User as UserModel } from 'App/Models/User'
+import { LoginForm } from 'App/Forms/LoginForm'
+import { Inject } from '@Typetron/Container'
+import { Auth } from '@Typetron/Framework/Auth'
 
-@Controller()
+@Controller('api')
 export class AuthController {
 
     @Inject()

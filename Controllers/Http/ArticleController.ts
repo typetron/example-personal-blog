@@ -1,42 +1,43 @@
-import { Controller, Delete, Get, Middleware, Patch, Post } from '@Typetron/Router';
-import { ArticleForm } from 'App/Forms/ArticleForm';
-import { Article } from 'App/Entities/Article';
-import { AuthMiddleware } from '@Typetron/Framework/Middleware';
-import { Article as ArticleModel } from 'App/Models/Article';
-import { Inject } from '@Typetron/Container';
-import { ArticleService } from 'App/Services/ArticleService';
+import { Controller, Delete, Get, Middleware, Post, Put, Query } from '@Typetron/Router'
+import { ArticleForm } from 'App/Forms/ArticleForm'
+import { Article } from 'App/Entities/Article'
+import { AuthMiddleware } from '@Typetron/Framework/Middleware'
+import { Article as ArticleModel } from 'App/Models/Article'
+import { Inject } from '@Typetron/Container'
+import { ArticleService } from 'App/Services/ArticleService'
 
-@Controller()
+@Controller('api')
 export class ArticlesController {
 
     @Inject()
-    articleService: ArticleService;
+    articleService: ArticleService
 
     @Get()
-    async index() {
-        return ArticleModel.from(Article.get());
+    async index(@Query('page') page = 1) {
+        const limit = 5
+        return ArticleModel.from(Article.newQuery().limit((page - 1) * limit, limit).get())
     }
 
     @Get(':Article')
     read(article: Article) {
-        return ArticleModel.from(article);
+        return ArticleModel.from(article)
     }
 
     @Post()
     @Middleware(AuthMiddleware)
     async add(form: ArticleForm) {
-        return this.articleService.add(form);
+        return this.articleService.add(form)
     }
 
-    @Patch(':Article')
+    @Put(':Article')
     @Middleware(AuthMiddleware)
     async update(article: Article, form: ArticleForm) {
-        return this.articleService.update(article, form);
+        return this.articleService.update(article, form)
     }
 
     @Delete(':Article')
     @Middleware(AuthMiddleware)
     async delete(article: Article) {
-        return this.articleService.delete(article);
+        return this.articleService.delete(article)
     }
 }

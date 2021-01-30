@@ -4,3 +4,6 @@ node_modules
 .nyc_output
 coverage
 /src/database.sqlite
+public/frontend/*
+!public/frontend/assets
+!public/frontend/favicon.ico

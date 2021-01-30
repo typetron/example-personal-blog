@@ -11,10 +11,10 @@
     </div>
     <div class="form-control">
         <label for="image">Image</label>
-        <input type="file" id="image" formControlName="image">
-        <img [src]="'assets/articles/' + form.controls.image.value" alt="" width="200">
+        <input (change)="previewImage($event)" id="image" type="file">
+        <img [src]="imagePreview" alt="" width="200">
         <ng-container *ngIf="form.controls.image.touched && form.controls.image.errors">
-            <div class="error" *ngFor="let error of form.controls.image.errors| keyvalue">
+            <div *ngFor="let error of form.controls.image.errors | keyvalue" class="error">
                 {{ error.value }}
             </div>
         </ng-container>
