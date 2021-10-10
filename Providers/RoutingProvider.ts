@@ -1,9 +1,9 @@
-import { AppConfig, Provider } from '@Typetron/Framework';
-import { Router } from '@Typetron/Router';
-import { Inject } from '@Typetron/Container';
+import { AppConfig, Provider, RootDir } from '@Typetron/Framework'
+import { Router } from '@Typetron/Router'
+import { Inject } from '@Typetron/Container'
 
 export class RoutingProvider extends Provider {
-    directory = 'Controllers';
+    directory = 'Controllers'
 
     @Inject()
     appConfig: AppConfig
@@ -11,9 +11,12 @@ export class RoutingProvider extends Provider {
     @Inject()
     router: Router
 
-    register() {
-        this.router.middleware = this.appConfig.middleware || [];
+    @Inject()
+    rootDir: RootDir
 
-        this.router.loadControllers(this.app.directory + '/' + this.directory);
+    register() {
+        this.router.middleware = this.appConfig.middleware || []
+
+        this.router.loadControllers(this.rootDir + '/' + this.directory)
     }
 }

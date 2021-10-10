@@ -89,7 +89,11 @@
             <a routerLink="/portfolio" [attr.active]="selectedPage === 'portfolio' ? true: undefined">Portfolio</a>
             <a routerLink="/about" [attr.active]="selectedPage === 'about' ? true: undefined">About me</a>
             <a routerLink="/contact" [attr.active]="selectedPage === 'contact' ? true: undefined">Contact</a>
-            <a routerLink="/login" [attr.active]="selectedPage === 'login' ? true: undefined">Login</a>
+            <a *ngIf="!(authService.token$ | async)" [attr.active]="selectedPage === 'login' ? true: undefined"
+               routerLink="/login"
+            >
+                Login
+            </a>
         </nav>
         <nav class="float-right">
             <a routerLink="/new" [attr.active]="selectedPage === 'new' ? true: undefined" *appAuth>New article</a>

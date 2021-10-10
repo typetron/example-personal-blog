@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { AuthService } from 'App/services/auth.service';
+import { Component } from '@angular/core'
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
+import { filter } from 'rxjs/operators'
+import { AuthService } from 'App/services/auth.service'
 
 @Component({
     selector: 'app-root',
@@ -9,12 +9,12 @@ import { AuthService } from 'App/services/auth.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    selectedPage = '';
+    selectedPage = ''
 
     constructor(
         public router: Router,
         public route: ActivatedRoute,
-        private authService: AuthService
+        public authService: AuthService
     ) {
         this.router.events
             .pipe(

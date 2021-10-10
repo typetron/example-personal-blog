@@ -15,7 +15,7 @@ export class ArticlesController {
     @Get()
     async index(@Query('page') page = 1) {
         const limit = 5
-        return ArticleModel.from(Article.newQuery().limit((page - 1) * limit, limit).get())
+        return ArticleModel.from(Article.newQuery().limit((page - 1) * limit, limit).orderBy('createdAt', 'DESC').get())
     }
 
     @Get(':Article')

@@ -3,7 +3,7 @@
         <label for="email">Email</label>
         <input type="text" id="email" formControlName="email" autocomplete="off">
         <ng-container *ngIf="form.controls.email.touched && form.controls.email.errors">
-            <div class="error" *ngFor="let error of form.controls.email.errors| keyvalue">
+            <div *ngFor="let error of form.controls.email.errors| keyvalue" class="error">
                 {{ error.value }}
             </div>
         </ng-container>

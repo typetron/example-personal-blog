@@ -39,6 +39,10 @@ export class ArticleFormComponent implements OnInit {
 
     async save() {
         let article: Article
+        const form: ArticleForm = this.form.value
+        if (!form.image) {
+            delete form.image
+        }
         if (this.id) {
             article = await this.articleService.edit(this.id, this.form.value)
         } else {
@@ -47,15 +51,6 @@ export class ArticleFormComponent implements OnInit {
 
         await this.router.navigate([article.id])
     }
-
-    // setImageField(event: Event) {
-    //     const input = event.target as HTMLInputElement
-    //     const reader = new FileReader()
-    //     reader.onloadend = () => {
-    //         this.form.patchValue({image: reader.result})
-    //     }
-    //     reader.readAsDataURL(input.files[0])
-    // }
 
     previewImage($event: Event) {
         const input = $event.target as HTMLInputElement

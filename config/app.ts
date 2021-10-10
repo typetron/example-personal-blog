@@ -14,8 +14,15 @@ export default new AppConfig({
         RoutingProvider,
         DatabaseProvider
     ],
-    staticAssets: {
-        '': ['public'],
-        '*': ['public/frontend']
-    }
+    staticAssets: [
+        {
+            url: '.*',
+            path: 'public'
+        },
+        {
+            url: '.*',
+            path: 'public/frontend',
+            basePath: true
+        },
+    ]
 })

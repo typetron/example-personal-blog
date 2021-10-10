@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 import '@Typetron/Support/Array'
+import '@Typetron/Support/String'
 import { enableProdMode } from '@angular/core'
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
 

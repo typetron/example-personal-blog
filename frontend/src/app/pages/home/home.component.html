@@ -6,7 +6,7 @@
         <span (click)="delete(article)" class="sub-text clickable float-right" *appAuth>Delete</span>
     </div>
     <section>
-        <p [innerHTML]="article.content + '...'" ></p>
+        <p [innerHTML]="article.content.limit(400)"></p>
         <img [src]="'assets/articles/' + article.image" alt="recipe image">
     </section>
 </article>
