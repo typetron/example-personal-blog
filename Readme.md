@@ -42,6 +42,6 @@ Email: admin@typetron.org
 Password: password
 ```
 
-Visit [localhost:8000](http://localhost:8000] in a browser and explore the app.
+Visit [localhost:8000](http://localhost:8000) in a browser and explore the app.
 
 Have fun!
