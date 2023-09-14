@@ -18,14 +18,14 @@ export class AppComponent {
     ) {
         this.router.events
             .pipe(
-                filter(event => event instanceof NavigationEnd)
+                filter((event): event is NavigationEnd => event instanceof NavigationEnd)
             )
-            .subscribe((event: NavigationEnd) => {
-                this.selectedPage = event.url.split('/')[1];
-            });
+            .subscribe(event => {
+                this.selectedPage = event.url.split('/')[1]
+            })
     }
 
     logout() {
-        this.authService.logout();
+        this.authService.logout()
     }
 }

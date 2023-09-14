@@ -35,7 +35,7 @@ $ npm run build:watch # if you want to rebuild the Angular app after doing some 
 $ npm start
 ```
 
-The app comes with some dummy data already in the database. You can login with the admin user using:
+The app comes with some dummy data already in the sqlite database file. You can login with the admin user using:
 
 ```
 Email: admin@typetron.org

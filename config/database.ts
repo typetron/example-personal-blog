@@ -1,4 +1,3 @@
-/* tslint:disable:no-default-export */
 import { DatabaseConfig } from '@Typetron/Framework'
 import { SqliteDriver } from '@Typetron/Database'
 

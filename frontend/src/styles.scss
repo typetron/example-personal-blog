@@ -123,25 +123,28 @@ article {
     div {
         display: flex;
         flex-direction: row;
-        h2{
+
+        h2 {
             flex: 1;
             margin: 0;
         }
 
-        &> a, &> span {
+        & > a, & > span {
             font-size: 24px;
             margin: 0 8px;
         }
     }
 
-    >section {
+    > section {
         display: flex;
         flex-direction: row;
         align-items: center;
-        img{
+
+        img {
             flex: 2;
             width: 100px;
         }
+
         p {
             flex: 4;
             text-align: justify;
@@ -149,11 +152,11 @@ article {
             line-height: 1.7;
         }
 
-        p + img, img + p  {
+        p + img, img + p {
             margin-left: 8px;
         }
 
-        > p:first-child{
+        > p:first-child {
             margin-top: 0;
         }
     }

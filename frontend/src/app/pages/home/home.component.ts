@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ArticleService } from 'App/services/article.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Article } from 'Data/Article';
+import { Component, OnInit } from '@angular/core'
+import { ArticleService } from 'App/services/article.service'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Article } from 'Data/Article'
 
 @Component({
     selector: 'app-home',
@@ -10,9 +10,9 @@ import { Article } from 'Data/Article';
 })
 export class HomeComponent implements OnInit {
 
-    articles: Article[] = [];
+    articles: Article[] = []
 
-    page = Number(this.route.snapshot.queryParams.page || 1);
+    page = Number(this.route.snapshot.queryParams['page'] ?? 1)
 
     constructor(
         private articleService: ArticleService,
@@ -22,20 +22,20 @@ export class HomeComponent implements OnInit {
 
     async ngOnInit() {
         this.route.queryParams.subscribe(async (params) => {
-            this.page = Number(params.page || 1);
-            this.articles = await this.articleService.articles(this.page);
-        });
+            this.page = Number(params['page'] ?? 1)
+            this.articles = await this.articleService.articles(this.page)
+        })
     }
 
     async delete(article: Article) {
         if (confirm('Are you sure you want to delete this article')) {
             await this.articleService.delete(article.id).then(() => {
-                this.articles.remove(article);
-            });
+                this.articles.remove(article)
+            })
         }
     }
 
     goToPage(page: number) {
-        this.router.navigate([], {queryParams: {page}});
+        this.router.navigate([], {queryParams: {page}})
     }
 }

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ArticleService } from 'App/services/article.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Article } from 'Data/Article';
+import { Component, OnInit } from '@angular/core'
+import { ArticleService } from 'App/services/article.service'
+import { Article } from 'Data/Article'
 
 @Component({
     selector: 'app-portfolio',
@@ -10,14 +9,14 @@ import { Article } from 'Data/Article';
 })
 export class PortfolioComponent implements OnInit {
 
-    articles: Article[] = [];
+    articles: Article[] = []
 
     constructor(
         private articleService: ArticleService,
     ) {}
 
     async ngOnInit() {
-        this.articles = await this.articleService.articles(0);
+        this.articles = await this.articleService.articles(0)
     }
 
 }

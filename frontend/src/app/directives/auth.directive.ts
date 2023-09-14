@@ -8,7 +8,7 @@ import { takeUntil } from 'rxjs/operators'
 })
 export class AuthDirective implements OnDestroy {
 
-    destroy$ = new Subject()
+    destroy$ = new Subject<void>()
 
     constructor(
         private templateRef: TemplateRef<any>,
@@ -20,13 +20,13 @@ export class AuthDirective implements OnDestroy {
             .subscribe((token) => {
                 this.viewContainer.clear()
                 if (token) {
-                    this.viewContainer.createEmbeddedView(this.templateRef);
+                    this.viewContainer.createEmbeddedView(this.templateRef)
                 }
-            });
+            })
     }
 
     ngOnDestroy(): void {
-        this.destroy$.next();
+        this.destroy$.next()
     }
 
 }
