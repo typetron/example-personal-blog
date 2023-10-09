@@ -3,17 +3,17 @@ import type { Form, FormField } from '@Typetron/Forms'
 import type { ChildKeys, Constructor, Type } from '@Typetron/Support'
 import { CreateArticleForm } from 'Data/CreateArticleForm'
 
-export type XCV<T extends Form> = {
+export type FormGroupObject<T extends Form> = {
     [P in Exclude<keyof T, keyof Form>]: AbstractControl<T[P]>;
 }
-type t = XCV<CreateArticleForm>
+type t = FormGroupObject<CreateArticleForm>
 export class FormBuilder {
-    static build<T extends Form>(form: typeof Form & Constructor<T>): FormGroup<XCV<T>> {
+    static build<T extends Form>(form: typeof Form & Constructor<T>): FormGroup<FormGroupObject<T>> {
         const fields = form.fields()
-        const controls = {} as XCV<T>
+        const controls = {} as FormGroupObject<T>
         const formFields = Object.values(fields) as FormField[]
         Object.values(formFields).forEach(field => {
-            controls[field.name as keyof XCV<T>] = new FormControl<any>(undefined, {validators: this.getValidators(field)})
+            controls[field.name as keyof FormGroupObject<T>] = new FormControl<any>(undefined, {validators: this.getValidators(field)})
         })
         return new FormGroup(controls)
     }

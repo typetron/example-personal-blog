@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { ArticleService } from 'App/services/article.service'
 import { CreateArticleForm } from 'Data/CreateArticleForm'
 import { Article } from 'Data/Article'
-import { FormBuilder, XCV } from 'App/utils'
+import { FormBuilder, FormGroupObject } from 'App/utils'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import { UpdateArticleForm } from 'Data/UpdateArticleForm'
 import { FormGroup } from '@angular/forms'
@@ -17,7 +17,7 @@ export class ArticleFormComponent implements OnInit {
     public contentEditor = ClassicEditor
 
     id?: number
-    form: FormGroup<XCV<CreateArticleForm>> | FormGroup<XCV<UpdateArticleForm>>
+    form: FormGroup<FormGroupObject<CreateArticleForm>> | FormGroup<FormGroupObject<UpdateArticleForm>>
 
     imagesBasePath = 'assets/articles/'
 
