@@ -7,3 +7,4 @@ coverage
 public/frontend/*
 !public/frontend/assets
 !public/frontend/favicon.ico
+tests/database.sqlite

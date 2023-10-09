@@ -1,20 +1,20 @@
-import { Column, CreatedAt, Entity, ID, Options, PrimaryColumn, UpdatedAt } from '@Typetron/Database';
+import { Column, CreatedAt, Entity, ID, Options, PrimaryColumn, UpdatedAt } from '@Typetron/Database'
 
 @Options({
     table: 'articles',
 })
 export class Article extends Entity {
     @PrimaryColumn()
-    id: ID;
+    id: ID
 
     @Column()
-    title: string;
+    title: string
 
     @Column()
-    content: string;
+    content: string
 
     @Column()
-    image: string;
+    image: string
 
     @CreatedAt()
     createdAt: Date

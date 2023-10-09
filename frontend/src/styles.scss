@@ -92,21 +92,25 @@ button {
     color: $primary-color;
     outline: none;
 
-    &:not([disabled]):hover {
-        color: white;
-        background-color: $primary-color;
-        cursor: pointer;
-    }
-
     &[disabled] {
         cursor: not-allowed;
         border-color: grey;
         color: grey;
     }
 
-    &:active {
-        background-color: lighten($primary-color, 10%);
+    &:not([disabled]) {
+        &:hover {
+            color: white;
+            background-color: $primary-color;
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: lighten($primary-color, 10%);
+        }
     }
+
+
 }
 
 article {

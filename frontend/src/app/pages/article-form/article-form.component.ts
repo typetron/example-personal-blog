@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core'
-// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import { ActivatedRoute, Router } from '@angular/router'
 import { ArticleService } from 'App/services/article.service'
-import { ArticleForm } from 'Data/ArticleForm'
+import { CreateArticleForm } from 'Data/CreateArticleForm'
 import { Article } from 'Data/Article'
-import { FormBuilder } from 'App/utils'
+import { FormBuilder, XCV } from 'App/utils'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import { UpdateArticleForm } from 'Data/UpdateArticleForm'
+import { FormGroup } from '@angular/forms'
 
 @Component({
     selector: 'app-article-form',
@@ -16,7 +17,7 @@ export class ArticleFormComponent implements OnInit {
     public contentEditor = ClassicEditor
 
     id?: number
-    form = FormBuilder.build(ArticleForm)
+    form: FormGroup<XCV<CreateArticleForm>> | FormGroup<XCV<UpdateArticleForm>>
 
     imagesBasePath = 'assets/articles/'
 
@@ -32,21 +33,31 @@ export class ArticleFormComponent implements OnInit {
     async ngOnInit() {
         this.id = this.route.snapshot.params['id']
         if (this.id) {
+            this.form = FormBuilder.build(UpdateArticleForm)
             const article = await this.articleService.get(this.id)
             this.form.patchValue({...article, image: undefined})
             this.imagePreview = `${this.imagesBasePath}/${article.image}`
+        } else {
+            this.form = FormBuilder.build(CreateArticleForm)
         }
     }
 
     async save() {
+        this.form.markAllAsTouched()
+        if (this.form.invalid) {
+            return
+        }
+
+        const form = this.form.value
+
+        if (!form.image) {
+            delete form.image
+        }
         let article: Article
-        // if (!this.form.value.image) {
-        //     delete form.image
-        // }
         if (this.id) {
-            article = await this.articleService.edit(this.id, this.form.value as ArticleForm)
+            article = await this.articleService.edit(this.id, form as UpdateArticleForm)
         } else {
-            article = await this.articleService.save(this.form.value as ArticleForm)
+            article = await this.articleService.save(form as CreateArticleForm)
         }
 
         await this.router.navigate([article.id])
@@ -61,6 +72,9 @@ export class ArticleFormComponent implements OnInit {
         }
         const image = input.files?.[0]
         if (image) {
+            Object.assign(image, {extension: image.type.split('/').pop()})
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             this.form.patchValue({image})
             reader.readAsDataURL(image)
         }

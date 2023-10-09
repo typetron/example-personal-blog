@@ -1,10 +1,11 @@
 import { Controller, Delete, Get, Middleware, Post, Put, Query } from '@Typetron/Router'
-import { ArticleForm } from 'App/Forms/ArticleForm'
+import { CreateArticleForm } from 'App/Forms/CreateArticleForm'
 import { Article } from 'App/Entities/Article'
 import { AuthMiddleware } from '@Typetron/Framework/Middleware'
 import { Article as ArticleModel } from 'App/Models/Article'
 import { Inject } from '@Typetron/Container'
 import { ArticleService } from 'App/Services/ArticleService'
+import { UpdateArticleForm } from 'App/Forms/UpdateArticleForm'
 
 @Controller('api')
 export class ArticlesController {
@@ -13,7 +14,7 @@ export class ArticlesController {
     articleService: ArticleService
 
     @Get()
-    async index(@Query('page') page = 1) {
+    async list(@Query('page') page = 1) {
         const limit = 5
         return ArticleModel.from(Article.newQuery().limit((page - 1) * limit, limit).orderBy('createdAt', 'DESC').get())
     }
@@ -25,13 +26,13 @@ export class ArticlesController {
 
     @Post()
     @Middleware(AuthMiddleware)
-    async add(form: ArticleForm) {
+    async add(form: CreateArticleForm) {
         return this.articleService.add(form)
     }
 
     @Put(':Article')
     @Middleware(AuthMiddleware)
-    async update(article: Article, form: ArticleForm) {
+    async update(article: Article, form: UpdateArticleForm) {
         return this.articleService.update(article, form)
     }
 

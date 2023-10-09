@@ -1,22 +1,23 @@
-import { ArticleForm } from 'App/Forms/ArticleForm'
+import { CreateArticleForm } from 'App/Forms/CreateArticleForm'
 import { Storage } from '@Typetron/Storage'
 import { Article as ArticleModel } from 'App/Models/Article'
 import { Article } from 'App/Entities/Article'
 import { Inject } from '@Typetron/Container'
+import { UpdateArticleForm } from 'App/Forms/UpdateArticleForm'
 
 export class ArticleService {
 
     @Inject()
     storage: Storage
 
-    async add(form: ArticleForm) {
+    async add(form: CreateArticleForm) {
         if (form.image) {
             await this.storage.save(form.image, 'public/assets/articles')
         }
         return ArticleModel.from(Article.create(form))
     }
 
-    async update(article: Article, form: ArticleForm) {
+    async update(article: Article, form: UpdateArticleForm) {
         if (form.image) {
             await this.storage.delete(`public/assets/articles/${article.image}`)
             await this.storage.save(form.image, 'public/assets/articles')
@@ -25,7 +26,9 @@ export class ArticleService {
     }
 
     async delete(article: Article) {
-        await this.storage.delete(`public/assets/articles/${article.image}`)
+        if (article.image) {
+            await this.storage.delete(`public/assets/articles/${article.image}`)
+        }
         await article.delete()
     }
 }

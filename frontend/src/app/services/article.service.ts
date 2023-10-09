@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Article } from 'Data/Article'
-import { ArticleForm } from 'Data/ArticleForm'
+import { CreateArticleForm } from 'Data/CreateArticleForm'
 import { AuthService } from 'App/services/auth.service'
 import { buildFormData } from 'App/utils'
 import { lastValueFrom } from 'rxjs'
+import { UpdateArticleForm } from 'Data/UpdateArticleForm'
 
 @Injectable({
     providedIn: 'root'
@@ -21,13 +22,13 @@ export class ArticleService {
         return lastValueFrom(this.http.get<Article>('api/' + id.toString()))
     }
 
-    save(article: ArticleForm) {
+    save(article: CreateArticleForm) {
         const form = new FormData()
         buildFormData(form, article)
         return lastValueFrom(this.http.post<Article>('api', form, {headers: {Authorization: this.authService.token$.getValue()}}))
     }
 
-    edit(id: number, article: ArticleForm) {
+    edit(id: number, article: UpdateArticleForm) {
         const form = new FormData()
         buildFormData(form, article)
         return lastValueFrom(this.http.put<Article>(`api/${id}`, form, {headers: {Authorization: this.authService.token$.getValue()}}))
