@@ -23,6 +23,12 @@ class AuthControllerTest extends TestCase {
 
     @test
     async login() {
+        await this.post<User>('api.register', {
+            email: 'testuser@test.com',
+            password: 'password',
+            passwordConfirmation: 'password'
+        })
+
         const response = await this.post<{token: string}>('api.login', {
             email: 'testuser@test.com',
             password: 'password'

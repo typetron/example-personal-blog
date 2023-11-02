@@ -4,10 +4,16 @@ import * as path from 'path'
 import * as dotenv from 'dotenv'
 import { User } from 'App/Entities/User'
 import { Crypt } from '@Typetron/Encryption'
+import { Storage } from '../../../typetron/build/Storage'
 
-dotenv.config({path: '.env.tests'})
+dotenv.config({path: 'tests/.env.tests'})
 
 export class TestCase extends BaseTestCase {
+
+    async after() {
+        await super.after()
+        await this.app.get(Storage).delete(process.env.DATABASE as string)
+    }
 
     async bootstrapApp() {
         return await Application.create(path.join(__dirname, '..'))

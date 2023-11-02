@@ -5,9 +5,12 @@ import { AppProvider } from 'App/Providers/AppProvider'
 export default new AppConfig({
     port: 8000,
     environment: 'development',
-    middleware: [
-        // CorsMiddleware
-    ],
+    server: 'uNetworking',
+    middleware: {
+        global: [],
+        http: [],
+        websocket: [],
+    },
     providers: [
         AppProvider,
         RoutingProvider,

@@ -12,7 +12,7 @@
 		"test": "mocha"
 	},
 	"dependencies": {
-		"@typetron/framework": "0.4.0-rc5",
+		"@typetron/framework": "0.4.0-rc10",
 		"reflect-metadata": "^0.1.13",
 		"dotenv": "^10.0.0",
 		"ts-node": "^10.9.1",
